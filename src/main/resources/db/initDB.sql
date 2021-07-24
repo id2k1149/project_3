@@ -2,8 +2,10 @@ DROP TABLE IF EXISTS student;
 
 CREATE TABLE student
 (
-    id               INT ,
-    name             VARCHAR(250) NOT NULL,
-    password         VARCHAR(250) NOT NULL
-
+    id bigint not null,
+    age integer,
+    dob date,
+    email varchar(255),
+    name varchar(255),
+    primary key (id)
 );
