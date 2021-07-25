@@ -2,7 +2,6 @@ package org.id2k1149.project_3.models;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table
 public class User {
