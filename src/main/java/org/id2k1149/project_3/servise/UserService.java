@@ -33,6 +33,29 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public void updateUser(Long userId,
+                           boolean is_admin,
+                           String email,
+                           String password
+                           ) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalStateException(
+                        "user with id " + userId + " does not exist"));
+
+        if (email != null  && !Objects.equals(user.getEmail(), email)) {
+            Optional<User> userOptional = userRepository.findUserByEmail(email);
+            if (userOptional.isPresent()) {
+                throw new IllegalStateException("we have this email");
+            }
+            user.setEmail(email);
+        }
+        if (password != null && password.length() > 0 && !Objects.equals(user.getPassword(), password)) {
+            user.setPassword(password);
+        }
+        user.setAdmin(is_admin);
+    }
+
     public void deleteUser(Long userId) {
         boolean exists = userRepository.existsById(userId);
         if (!exists) {
@@ -40,27 +63,5 @@ public class UserService {
                     "user with id " + userId + " does not exist");
         }
         userRepository.deleteById(userId);
-    }
-
-    @Transactional
-    public void updateUser(Long userId,
-                           String email,
-                           String password) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalStateException(
-                        "user with id " + userId + " does not exist"));
-
-        if (email != null  && !Objects.equals(user.getEmail(), email)) {
-            Optional<User> userOptional = userRepository
-                    .findUserByEmail(email);
-            if (userOptional.isPresent()) {
-                throw new IllegalStateException("we have this email");
-            }
-        }
-        if (password != null && password.length() > 0 && !Objects.equals(user.getPassword(), password)) {
-            user.setPassword(password);
-        }
-        user.setEmail(email);
-        user.setPassword(password);
     }
 }

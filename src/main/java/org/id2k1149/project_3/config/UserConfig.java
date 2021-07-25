@@ -17,18 +17,32 @@ public class UserConfig {
     @Bean
     CommandLineRunner commandLineRunner(UserRepository userRepository) {
         return args -> {
+            User admin_1 = new User(
+                    true,
+                    "admin_1@test.test",
+                    "admin"
+            );
+
+            User admin_2 = new User(
+                    true,
+                    "admin_2@test.test",
+                    "admin"
+            );
+
             User john = new User(
+                    false,
                     "john@test.test",
-                    "John"
+                    "pass"
             );
 
             User paul =new User(
+                    false,
                     "paul@test.test",
-                    "Paul"
+                    "pass"
             );
 
             userRepository.saveAll(
-                    List.of(john, paul)
+                    List.of(admin_1, admin_2, john, paul)
             );
         };
     }
