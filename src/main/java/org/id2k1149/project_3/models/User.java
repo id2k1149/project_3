@@ -17,25 +17,30 @@ public class User {
             generator = "user_sequence"
     )
     private Long id;
+    private boolean admin;
     private String email;
     private String password;
+
 
     public User() {
     }
 
     public User(Long id,
+                boolean admin,
                 String email,
                 String password
                    ) {
         this.id = id;
+        this.admin = admin;
         this.email = email;
         this.password = password;
     }
 
-    public User(String email,
+    public User(boolean admin,
+                String email,
                 String password
                 ) {
-
+        this.admin = admin;
         this.email = email;
         this.password = password;
 
@@ -65,11 +70,19 @@ public class User {
         this.email = email;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", is admin='" + admin + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

@@ -1,11 +1,8 @@
 DROP TABLE IF EXISTS user;
 
-CREATE TABLE user
-(
-    id bigint not null,
-    age integer,
-    dob date,
-    email varchar(255),
-    name varchar(255),
-    primary key (id)
+create table user (
+      id bigint not null,
+      email varchar not null,
+      password varchar not null,
+      primary key (id)
 );
