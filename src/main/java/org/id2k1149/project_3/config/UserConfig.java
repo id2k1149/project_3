@@ -18,17 +18,13 @@ public class UserConfig {
     CommandLineRunner commandLineRunner(UserRepository userRepository) {
         return args -> {
             User john = new User(
-                    "John",
                     "john@test.test",
-                    LocalDate.of(1940, OCTOBER, 9)
-
+                    "John"
             );
 
             User paul =new User(
-                    "Paul",
                     "paul@test.test",
-                    LocalDate.of(1942, JUNE, 18)
-
+                    "Paul"
             );
 
             userRepository.saveAll(

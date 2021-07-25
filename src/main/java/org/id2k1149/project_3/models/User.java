@@ -1,8 +1,7 @@
 package org.id2k1149.project_3.models;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.Period;
+
 
 @Entity
 @Table
@@ -18,33 +17,28 @@ public class User {
             generator = "user_sequence"
     )
     private Long id;
-    private String name;
     private String email;
-    private LocalDate dob;
-
-    @Transient
-    private Integer age;
+    private String password;
 
     public User() {
     }
 
     public User(Long id,
-                String name,
                 String email,
-                LocalDate dob
+                String password
                    ) {
         this.id = id;
-        this.name = name;
         this.email = email;
-        this.dob = dob;
+        this.password = password;
     }
 
-    public User(String name,
-                String email,
-                LocalDate dob) {
-        this.name = name;
+    public User(String email,
+                String password
+                ) {
+
         this.email = email;
-        this.dob = dob;
+        this.password = password;
+
     }
 
     public Long getId() {
@@ -55,12 +49,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String name) {
+        this.password = name;
     }
 
     public String getEmail() {
@@ -71,30 +65,13 @@ public class User {
         this.email = email;
     }
 
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
-    public Integer getAge() {
-        return Period.between(this.dob, LocalDate.now()).getYears();
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", dob=" + dob +
-                ", age=" + age +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
