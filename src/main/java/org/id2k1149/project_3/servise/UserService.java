@@ -44,14 +44,11 @@ public class UserService {
 
     @Transactional
     public void updateUser(Long userId,
-                           String password,
-                           String email) {
+                           String email,
+                           String password) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException(
                         "user with id " + userId + " does not exist"));
-        if (password != null && password.length() > 0 && !Objects.equals(user.getPassword(), password)) {
-            user.setPassword(password);
-        }
 
         if (email != null  && !Objects.equals(user.getEmail(), email)) {
             Optional<User> userOptional = userRepository
@@ -60,6 +57,10 @@ public class UserService {
                 throw new IllegalStateException("we have this email");
             }
         }
+        if (password != null && password.length() > 0 && !Objects.equals(user.getPassword(), password)) {
+            user.setPassword(password);
+        }
         user.setEmail(email);
+        user.setPassword(password);
     }
 }
