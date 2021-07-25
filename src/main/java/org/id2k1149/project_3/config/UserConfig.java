@@ -1,7 +1,7 @@
 package org.id2k1149.project_3.config;
 
-import org.id2k1149.project_3.models.Student;
-import org.id2k1149.project_3.repository.StudentRepository;
+import org.id2k1149.project_3.models.User;
+import org.id2k1149.project_3.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,26 +12,26 @@ import java.util.List;
 import static java.time.Month.*;
 
 @Configuration
-public class StudentConfig {
+public class UserConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
+    CommandLineRunner commandLineRunner(UserRepository userRepository) {
         return args -> {
-            Student john = new Student(
+            User john = new User(
                     "John",
                     "john@test.test",
                     LocalDate.of(1940, OCTOBER, 9)
 
             );
 
-            Student paul =new Student(
+            User paul =new User(
                     "Paul",
                     "paul@test.test",
                     LocalDate.of(1942, JUNE, 18)
 
             );
 
-            studentRepository.saveAll(
+            userRepository.saveAll(
                     List.of(john, paul)
             );
         };
