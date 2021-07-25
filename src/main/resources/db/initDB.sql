@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS user;
 
-CREATE TABLE student
+CREATE TABLE user
 (
     id bigint not null,
     age integer,
