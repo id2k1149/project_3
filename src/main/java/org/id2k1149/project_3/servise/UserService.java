@@ -24,6 +24,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User getUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalStateException(
+                        "user with id " + userId + " does not exist"));
+        return user;
+    }
+
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepository
                 .findUserByEmail(user.getEmail());
@@ -64,4 +71,5 @@ public class UserService {
         }
         userRepository.deleteById(userId);
     }
+
 }
