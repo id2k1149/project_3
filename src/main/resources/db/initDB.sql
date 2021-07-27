@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS appUser;
 
-create table user (
+create table appUser (
       id bigint not null,
       email varchar not null,
       password varchar not null,

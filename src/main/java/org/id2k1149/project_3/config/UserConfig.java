@@ -1,15 +1,13 @@
 package org.id2k1149.project_3.config;
 
-import org.id2k1149.project_3.models.User;
+import org.id2k1149.project_3.models.AppUser;
+import org.id2k1149.project_3.models.Role;
 import org.id2k1149.project_3.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.LocalDate;
 import java.util.List;
-
-import static java.time.Month.*;
 
 @Configuration
 public class UserConfig {
@@ -17,33 +15,37 @@ public class UserConfig {
     @Bean
     CommandLineRunner commandLineRunner(UserRepository userRepository) {
         return args -> {
-            User admin_1 = new User(
-                    true,
+            AppUser admin_1 = new AppUser(
+                    "admin_1",
                     "admin_1@test.test",
-                    "admin"
+                    "admin",
+                    Role.ADMIN
             );
 
-            User admin_2 = new User(
-                    true,
+            AppUser admin_2 = new AppUser(
+                    "admin_2",
                     "admin_2@test.test",
-                    "admin"
+                    "admin",
+                    Role.ADMIN
             );
 
-            User john = new User(
-                    false,
+            AppUser john = new AppUser(
+                    "John",
                     "john@test.test",
-                    "pass"
+                    "j_pass",
+                    Role.USER
             );
 
-            User paul =new User(
-                    false,
+            AppUser paul =new AppUser(
+                    "Paul",
                     "paul@test.test",
-                    "pass"
+                    "p_pass",
+                    Role.USER
             );
 
-            userRepository.saveAll(
-                    List.of(admin_1, admin_2, john, paul)
-            );
+//            userRepository.saveAll(
+//                    List.of(admin_1, admin_2, john, paul)
+//            );
         };
     }
 }
