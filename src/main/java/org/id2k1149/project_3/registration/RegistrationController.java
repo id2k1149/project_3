@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "api/v1/registration")
+//@RequestMapping(path = "api/v1/users")
 public class RegistrationController {
 
     private RegistrationService registrationService;
@@ -16,7 +17,7 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String register(@RequestBody RegistrationRequest request) {
-        return registrationService.register(request);
+    public void register(@RequestBody RegistrationRequest request) {
+        registrationService.register(request);
     }
 }

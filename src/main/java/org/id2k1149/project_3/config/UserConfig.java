@@ -43,9 +43,9 @@ public class UserConfig {
                     Role.USER
             );
 
-//            userRepository.saveAll(
-//                    List.of(admin_1, admin_2, john, paul)
-//            );
+            userRepository.saveAll(
+                    List.of(admin_1, admin_2, john, paul)
+            );
         };
     }
 }

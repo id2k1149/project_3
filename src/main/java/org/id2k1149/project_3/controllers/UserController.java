@@ -2,6 +2,7 @@ package org.id2k1149.project_3.controllers;
 
 import org.id2k1149.project_3.models.AppUser;
 import org.id2k1149.project_3.models.Role;
+import org.id2k1149.project_3.registration.RegistrationService;
 import org.id2k1149.project_3.servise.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

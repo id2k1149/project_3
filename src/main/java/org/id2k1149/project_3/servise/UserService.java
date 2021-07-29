@@ -55,21 +55,20 @@ public class UserService implements UserDetailsService {
 //        userRepository.save(appUser);
 //    }
 
-    public String addNewUser(AppUser appUser) {
+    public void addNewUser(AppUser appUser) {
         boolean userExists = userRepository
                 .findUserByEmail(appUser.getEmail())
                 .isPresent();
 
         if (userExists) {
-            throw new IllegalStateException("this email is already used");
+            return;
+//            throw new IllegalStateException("this email is already used");
         }
 
         String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
         appUser.setPassword(encodedPassword);
 
         userRepository.save(appUser);
-
-        return "A new user was added";
     }
 
     @Transactional
